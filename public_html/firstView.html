@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/firstViewCss.css" rel="stylesheet" />
+<script
+	src="https://code.jquery.com/jquery-3.1.1.min.js"
+	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	crossorigin="anonymous">
+</script>
+<script src="javascript/firstViewJs.js"></script>
+<script src="javascript/validationForm.js"></script>
+
+</head>
+<body>
+<div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-4">
+								<a href="#" class="active" id="login-form-link">Iniciar Sesión</a>
+							</div>
+							<div class="col-xs-4">
+								<a href="#" id="login-form-delegado-link">Acceso Delegados</a>
+							</div>
+							<div class="col-xs-4">
+								<a href="#" id="register-form-link">Registrarse</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<!--php_handler llama al php fuera del directorio publico para que nadie pueda acceder a los archivos php -->
+								<form id="login-form" action="php_handler/postLogIn_handler.php" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<input required type="text" name="dni" id="dni" tabindex="1" class="form-control" placeholder="Dni (Sin letra. Ej.: 22334455)" >
+									</div>
+									<div class="form-group">
+										<input required type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Iniciar Sesión">
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="login-form-delegado" action="php_handler/postDelegadoLogIn_handler.php" method="post" role="form" style="display: none;">
+									<div class="form-group">
+										<input required type="text" name="dni_delegado" id="dni_delegado" tabindex="1" class="form-control" placeholder="Dni (Sin letra. Ej.: 22334455)" >
+									</div>
+									<div class="form-group">
+										<input required type="password" name="password_delegado" id="password_delegado" tabindex="2" class="form-control" placeholder="Contraseña">
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit_delegado" id="login-submit_delegado" tabindex="4" class="form-control btn btn-login" value="Iniciar Sesión">
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="register-form" action="php_handler/postRegister_handler.php" onsubmit="return validateFormRegister()" method="post" role="form" style="display: none;">
+									<div class="form-group">
+										<input required type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nombre y Apellidos" >
+									</div>
+									<div class="form-group">
+										<input required type="number" name="dni" id="dni" tabindex="1" class="form-control" placeholder="Dni (Sin letra. Ej.: 22334455)" >
+									</div>
+									<div class="form-group">
+										<input required type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" >
+									</div>
+									<div class="form-group">
+										<input required type="number" name="telefono" id="telefono" tabindex="1" class="form-control" placeholder="Teléfono de Contacto" >
+									</div>
+									<div class="form-group">
+										<input required type="text" name="experiencia" id="experciencia" tabindex="1" class="form-control" placeholder="Expercian Previa en IAESTE? (De qué manera en caso de que sí)">
+									</div>
+									<div class="form-group">
+										<input required type="password" name="password" id="password" tabindex="1" class="form-control" placeholder="Contraseña">
+									</div>
+									<div class="form-group">
+										<label>Selecciona tu centro:</label>
+										<select name="centro" class="form-control">
+										    <option value="ADVA">ADVA (Facultad de Administración y Dirección de Empresas)</option>
+										    <option value="ARVA">ARVA (E.T.S. Ingeniería Agronómica y del Medio Natural)</option>
+										    <option value="AQVA">AQVA (E.T.S. Arquitectura)</option>
+										    <option value="ATVA">ATVA (E.T.S. Ingeniería de Edificación)</option>
+										    <option value="CAVA">CAVA (E.T.S. Ingenieros de Caminos, Canales y Puertos)</option>
+										    <option value="EPAY">EPAY (E.P.S. de Alcoy)</option>
+										    <option value="ICVA">ICVA (E.T.S.I. Geodésica, Cartográfica y Topográfica)</option>
+										    <option value="IDVA">IDVA (E.T.S. Ingenieros Industriales)</option>
+										    <option value="IFVA">IFVA (E.T.S. Ingeniería Informática)</option>
+										    <option value="ITVA">ITVA (E.T.S. Ingeniería del Diseño)</option>
+										    <option value="TLVA">TLVA (E.T.S. Ingenieros de Telecomunicación)</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Hazme socio!">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<img src="cabecera.jpg" class="img-responsive center-block" alt="Iaeste_Valencia">
+			</div>
+		</div>
+		<div class="footer">
+			Jorge Cabrera Roca / 
+			<a style="color:black" href="mailto:someone@example.com">jcr7301@gmail.com</a>
+		</div>
+	</div>
+
+<script src="javascript/autoLogIn.js"></script>
+</body>
+</hmtl>
